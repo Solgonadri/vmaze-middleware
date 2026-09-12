@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: vmaze-middelware
+server:
+  port: 8080

@@ -1,8 +1,6 @@
 package com.jsolisg.vmaze_middelware.mapper;
 
-import com.jsolisg.vmaze_middelware.dto.SearchShowResponse;
-import com.jsolisg.vmaze_middelware.dto.TvMazeNetwork;
-import com.jsolisg.vmaze_middelware.dto.TvMazeShow;
+import com.jsolisg.vmaze_middelware.dto.*;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -27,5 +25,33 @@ public class ShowMapper {
             return webChannel.name();
         }
         return null;
+    }
+
+    public ShowResponse toShowResponse(TvMazeShowResponse show) {
+        return new ShowResponse(
+                show.id(),
+                show.url(),
+                show.name(),
+                show.type(),
+                show.language(),
+                show.genres(),
+                show.status(),
+                show.runtime(),
+                show.averageRuntime(),
+                show.premiered(),
+                show.ended(),
+                show.officialSite(),
+                show.schedule(),
+                show.rating(),
+                show.weight(),
+                show.network(),
+                show.webChannel(),
+                show.dvdCountry(),
+                show.externals(),
+                show.image(),
+                show.summary(),
+                show.updated(),
+                show.links()
+        );
     }
 }

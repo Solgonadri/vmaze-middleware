@@ -1,13 +1,11 @@
 package com.jsolisg.vmaze_middelware.controller;
 
 import com.jsolisg.vmaze_middelware.dto.SearchShowResponse;
+import com.jsolisg.vmaze_middelware.dto.ShowResponse;
 import com.jsolisg.vmaze_middelware.dto.TvMazeSearchItem;
 import com.jsolisg.vmaze_middelware.service.ShowService;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +24,10 @@ public class ShowController {
             @RequestParam("search_query")
             String query){
         return service.searchShows(query);
+    }
+
+    @GetMapping("/{showId}")
+    public ShowResponse  getShow(@PathVariable Long showId){
+        return service.getShow(showId);
     }
 }

@@ -2,6 +2,8 @@ package com.jsolisg.vmaze_middelware.client;
 
 import com.jsolisg.vmaze_middelware.config.TvMazeProperties;
 import com.jsolisg.vmaze_middelware.dto.TvMazeSearchItem;
+import com.jsolisg.vmaze_middelware.dto.TvMazeShow;
+import com.jsolisg.vmaze_middelware.dto.TvMazeShowResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
@@ -27,5 +29,14 @@ public class TvMazeClient {
                 .body(TvMazeSearchItem[].class);
 
         return response != null ? Arrays.asList(response) : List.of();
+    }
+
+    public TvMazeShowResponse getShow(Long id){
+        return restClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/shows/{id}")
+                        .build(id))
+                .retrieve()
+                .body(TvMazeShowResponse.class);
     }
 }

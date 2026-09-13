@@ -1,8 +1,7 @@
 package com.jsolisg.vmaze_middelware.service;
 
 import com.jsolisg.vmaze_middelware.client.TvMazeClient;
-import com.jsolisg.vmaze_middelware.dto.SearchShowResponse;
-import com.jsolisg.vmaze_middelware.dto.TvMazeSearchItem;
+import com.jsolisg.vmaze_middelware.dto.*;
 import com.jsolisg.vmaze_middelware.mapper.ShowMapper;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +25,10 @@ public class ShowService {
                 .map(TvMazeSearchItem::show)
                 .map(showMapper::toSearchResponse)
                 .toList();
+    }
+
+    public ShowResponse getShow(Long showId){
+        TvMazeShowResponse response = tvMazeClient.getShow(showId);
+        return showMapper.toShowResponse(response);
     }
 }

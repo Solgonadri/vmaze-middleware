@@ -1,5 +1,7 @@
 package com.jsolisg.vmaze_middelware.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +28,7 @@ public record ShowResponse(
         TvMazeImage image,
         String summary,
         Long updated,
+        @JsonProperty("_links")
         Map<String, Object> links
 ) {
 }

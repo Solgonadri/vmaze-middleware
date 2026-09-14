@@ -29,6 +29,7 @@ public record ShowResponse(
         String summary,
         Long updated,
         @JsonProperty("_links")
-        Map<String, Object> links
+        Map<String, Object> links,
+        List<ShowCommentResponse> comments
 ) {
 }

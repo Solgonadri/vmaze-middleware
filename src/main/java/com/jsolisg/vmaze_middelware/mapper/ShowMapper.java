@@ -3,6 +3,8 @@ package com.jsolisg.vmaze_middelware.mapper;
 import com.jsolisg.vmaze_middelware.dto.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class ShowMapper {
     public SearchShowResponse toSearchResponse(TvMazeShow show) {
@@ -52,7 +54,8 @@ public class ShowMapper {
                 show.image(),
                 show.summary(),
                 show.updated(),
-                show.links()
+                show.links(),
+                List.of()
         );
     }
 }

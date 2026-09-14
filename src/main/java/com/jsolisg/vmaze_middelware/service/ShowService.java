@@ -87,9 +87,44 @@ public class ShowService {
     }
 
     public ShowResponse getShow(Long showId){
-        return showRepository.findById(showId)
+        ShowResponse show = showRepository.findById(showId)
                 .map(showDocumentMapper::toResponse)
                 .orElseGet(() -> fetchAndCacheShow(showId));
+
+        List<ShowCommentResponse> comments = commentRepository.findByShowId(showId)
+                .stream()
+                .map(comment -> new ShowCommentResponse(
+                        comment.getComment(),
+                        comment.getRating()
+                ))
+                .toList();
+
+        return new ShowResponse(
+                show.id(),
+                show.url(),
+                show.name(),
+                show.type(),
+                show.language(),
+                show.genres(),
+                show.status(),
+                show.runtime(),
+                show.averageRuntime(),
+                show.premiered(),
+                show.ended(),
+                show.officialSite(),
+                show.schedule(),
+                show.rating(),
+                show.weight(),
+                show.network(),
+                show.webChannel(),
+                show.dvdCountry(),
+                show.externals(),
+                show.image(),
+                show.summary(),
+                show.updated(),
+                show.links(),
+                comments
+        );
     }
 
     private ShowResponse fetchAndCacheShow(Long showId) {

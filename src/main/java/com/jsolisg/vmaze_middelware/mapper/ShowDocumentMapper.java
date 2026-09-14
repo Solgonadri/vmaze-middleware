@@ -4,6 +4,8 @@ import com.jsolisg.vmaze_middelware.dto.*;
 import com.jsolisg.vmaze_middelware.percistence.document.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class ShowDocumentMapper {
     public ShowDocument toDocument(TvMazeShowResponse source) {
@@ -155,7 +157,8 @@ public class ShowDocumentMapper {
                         : null,
                 source.getSummary(),
                 source.getUpdated(),
-                source.getLinks()
+                source.getLinks(),
+                List.of()
         );
     }
 }

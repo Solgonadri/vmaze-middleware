@@ -9,6 +9,7 @@ public record TvMazeShow(
         TvMazeNetwork network,
         TvMazeNetwork webChannel,
         String summary,
-        List<String> genres
+        List<String> genres,
+        List<ShowCommentResponse> comments
 ) {
 }

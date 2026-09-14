@@ -11,7 +11,8 @@ public class ShowMapper {
                 show.name(),
                 resolveChannel(show),
                 show.summary(),
-                show.genres()
+                show.genres(),
+                show.comments()
         );
     }
 
